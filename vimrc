@@ -1,20 +1,20 @@
+source ~/.vim/plugins.vim
+
 syntax on
+
+colorscheme onedark
 
 " lets:
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
+let NERDTreeShowLineNumbers = 1
 let mapleader = " "
 let NERDTreeShowHidden = 1
-
 let g:ale_fix_on_save = 0
-
 let g:user_emmet_leader_key = ","
-
 let g:better_whitespace_enabled = 1
-
+let g:strip_whitespace_on_save = 1
 let g:obvious_resize_default = 2
-
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
@@ -42,13 +42,12 @@ set relativenumber
 set wildmenu
 set wildmode=list:longest,full
 set wildignorecase
-
 set splitright
 set splitbelow
+set clipboard=unnamed
 
 " Make it obvious where 80 characters is
 set colorcolumn=81
-
 set laststatus=2
 set numberwidth=5
 set encoding=UTF-8
@@ -78,52 +77,17 @@ set signcolumn=yes
 
 " end sets
 
-call plug#begin('~/.vim/plugged')
-
-" Plugins:
-
-" Editing
-Plug 'editorconfig/editorconfig-vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/vim-easy-align'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'preservim/nerdtree'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tomtom/tcomment_vim'
-Plug 'talek/obvious-resize'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'rstacruz/vim-closer'
-
-" Git
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-
-" Search
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
-
-" Languages and frameworks
-Plug 'sheerun/vim-polyglot'
-Plug 'mattn/emmet-vim'
-
-" UI
-Plug 'ryanoasis/vim-devicons'
-Plug 'joshdick/onedark.vim'
-
-" Lint
-Plug 'dense-analysis/ale'
-
-" Reports
-Plug 'wakatime/vim-wakatime'
-
-call plug#end()
-
-colorscheme onedark
 
 inoremap jk <Esc>
 
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 nnoremap 0 ^
+nmap H 0
+nnoremap L $
+nnoremap <Leader>q :q<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 nnoremap <Leader>f :Ag<CR>
@@ -139,6 +103,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -179,10 +144,10 @@ nmap ; :Files<CR>
 " End Fzf suggestions
 
 " ObviousResize suggestions:
-nnoremap <silent> <Left> :<C-U>ObviousResizeLeft<CR>
-nnoremap <silent> <Down> :<C-U>ObviousResizeDown<CR>
-nnoremap <silent> <Up> :<C-U>ObviousResizeUp<CR>
-nnoremap <silent> <Right> :<C-U>ObviousResizeRight<CR>
+nnoremap <silent> <S-Left> :<C-U>ObviousResizeLeft<CR>
+nnoremap <silent> <S-Down> :<C-U>ObviousResizeDown<CR>
+nnoremap <silent> <S-Up> :<C-U>ObviousResizeUp<CR>
+nnoremap <silent> <S-Right> :<C-U>ObviousResizeRight<CR>
 " End ObviousResize suggestions
 
 " EasyMotion suggestions:
@@ -201,6 +166,7 @@ nnoremap <Leader>gw :Gwrite<cr>
 nnoremap <Leader>ga :Git add<cr>
 nnoremap <Leader>gb :Gblame<cr>
 nnoremap <Leader>gci :Gcommit<cr>
+nnoremap <Leader>gch :Git checkout -- %<cr>
 nnoremap <Leader>ge :Gedit<cr>
 nnoremap <Leader>gm :Gmove
 nnoremap <Leader>gr :Gread<cr>
@@ -212,6 +178,3 @@ nnoremap <Leader>gl :0Glog<cr>
 highlight Normal ctermbg=none
 highlight CursorLineNr ctermfg=lightblue cterm=bold
 highlight LineNr ctermfg=none
-
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/

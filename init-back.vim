@@ -1,4 +1,4 @@
-source ~/.vim/plugins.vim
+source ~/.config/nvim/plugins.vim
 
 syntax on
 
@@ -6,6 +6,7 @@ colorscheme onedark
 
 " lets:
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let NERDTreeShowLineNumbers = 1
 let mapleader = " "
@@ -19,6 +20,16 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \}
+
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+
+" Coc Prettier e Eslint
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
 " end lets
 
@@ -55,15 +66,16 @@ set t_Co=256
 set scrolloff=3
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set foldmethod=indent
-set foldlevelstart=10
+set foldlevelstart=99
 
 " Tabs
 set expandtab
 set autoindent
 set smartindent
 set smarttab
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 
 "CoC suggestions:
 set nohidden
@@ -84,8 +96,7 @@ inoremap jk <Esc>
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-nnoremap 0 ^
-nmap H 0
+nnoremap H 0^
 nnoremap L $
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>o o<Esc>
@@ -140,7 +151,7 @@ nnoremap <C-l> <C-w>l
 " End NERDTree suggestions
 
 " Fzf suggestions:
-nmap ; :Files<CR>
+nmap ; :FZF<CR>
 " End Fzf suggestions
 
 " ObviousResize suggestions:
@@ -159,6 +170,10 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " EasyAlign suggestions
 
+" Coc Config
+nnoremap <silent> K :call CocAction('doHover')<CR>
+" End Coc Config
+
 " Fugitive suggestions:
 nnoremap <Leader>gd :Gvdiff<cr>
 nnoremap <Leader>gs :Gstatus<cr>
@@ -173,6 +188,7 @@ nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>grm :Gremove<cr>
 nnoremap <Leader>gp :Git push
 nnoremap <Leader>gl :0Glog<cr>
+
 " End Fugitive suggestions
 
 highlight Normal ctermbg=none

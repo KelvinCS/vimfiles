@@ -7,7 +7,7 @@ colorscheme onedark
 
 let mapleader = " "
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 let g:user_emmet_leader_key = ","
 
 
@@ -30,7 +30,7 @@ set noswapfile
 "End Set's
 
 
-" Coc settings
+" Goc settings
 
 set hidden
 set cmdheight=2
@@ -43,6 +43,10 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-json',
   \ ]
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -59,6 +63,11 @@ endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 "End coc settings
 
 
@@ -68,6 +77,12 @@ nnoremap ; :Files<CR>
 
 " End FZF
 
+" NERDTree 
+
+map <Leader>nt :NERDTreeToggle<CR>
+map <Leader>nf :NERDTreeFind<CR>
+
+" End NERDTree
 
 " Mappings
 
@@ -90,6 +105,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>th :tabprev<CR>
 nnoremap <Leader>tl :tabnext<CR>
 
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
 "End Mappings
 
 

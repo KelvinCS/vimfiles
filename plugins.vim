@@ -25,6 +25,7 @@ Plug 'mattn/emmet-vim'
 " UI
 Plug 'joshdick/onedark.vim'
 Plug 'preservim/nerdtree'
+Plug 'morhetz/gruvbox'
 
 "Languages
 Plug 'pangloss/vim-javascript'

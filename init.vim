@@ -1,7 +1,7 @@
 source ~/.config/nvim/plugins.vim
 
 syntax on
-colorscheme onedark
+colorscheme gruvbox
 
 " Let's
 

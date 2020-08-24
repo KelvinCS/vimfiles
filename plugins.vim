@@ -26,11 +26,14 @@ Plug 'mattn/emmet-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'preservim/nerdtree'
 Plug 'morhetz/gruvbox'
+Plug 'ryanoasis/vim-devicons'
+Plug 'chrisbra/Colorizer'
 
 "Languages
 Plug 'pangloss/vim-javascript'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Lint
 Plug 'dense-analysis/ale'

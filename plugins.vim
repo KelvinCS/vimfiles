@@ -36,6 +36,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'dense-analysis/ale'
 
 " Reports
-Plug 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 
 call plug#end()

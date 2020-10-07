@@ -1,7 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
-        "dart"
-    ],
+    "coc.preferences.formatOnSaveFiletypes": [],
 
     "flutter.provider.hot-reload": true
 }
